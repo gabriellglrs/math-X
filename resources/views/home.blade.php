@@ -17,12 +17,48 @@
 
 <!-- logo -->
 <div class="text-center my-3">
-    <img src="assets/images/logo.jpg" alt="logo" class="img-fluid">
+    <img src="{{ asset('assets/images/logo.jpg') }}" alt="logo" class="img-fluid">
 </div>
 
 <h3 class="text-center text-secondary mb-5">
     Selecione as opções para gerar<br><span class="text-info">exercícios de matemática</span>.
 </h3>
+
+{{--error de validacao--}}
+@if($errors->any())
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-danger text-center mt-3" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                    <strong>Atenção!</strong><br>
+                    Por favor, selecione pelo menos uma operação matemática para gerar os exercícios.
+
+                    {{-- Mostrar erros específicos se existirem --}}
+                    @if($errors->has('operations'))
+                        <br><small>{{ $errors->first('operations') }}</small>
+                    @endif
+
+                    {{-- Mostrar outros erros de validação --}}
+                    @if($errors->has('number_one') || $errors->has('number_two') || $errors->has('number_exercises'))
+                        <hr class="my-2">
+                        <div class="text-start">
+                            @if($errors->has('number_one'))
+                                <small class="d-block">• {{ $errors->first('number_one') }}</small>
+                            @endif
+                            @if($errors->has('number_two'))
+                                <small class="d-block">• {{ $errors->first('number_two') }}</small>
+                            @endif
+                            @if($errors->has('number_exercises'))
+                                <small class="d-block">• {{ $errors->first('number_exercises') }}</small>
+                            @endif
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
 
 <!-- form -->
 <form action="{{ route('generateExercises') }}" method="post">
@@ -105,7 +141,7 @@
 
 <!-- footer -->
 <footer class="text-center mt-5">
-    <p class="text-secondary">MathX &copy; <span class="text-info">[ANO]</span></p>
+    <p class="text-secondary">{{ getenv('APP_NAME') }} &copy; <span class="text-info">{{ date('Y') }}</span></p>
 </footer>
 
 <!-- bootstrap -->
