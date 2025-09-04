@@ -20,13 +20,62 @@ class MainController extends Controller
             'check_subtraction' => 'required_without_all:check_sum,check_multiplication,check_division',
             'check_multiplication' => 'required_without_all:check_sum,check_subtraction,check_division',
             'check_division' => 'required_without_all:check_sum,check_subtraction,check_multiplication',
-            'number_one' => 'required|integer|min:0|max:999',
+            'number_one' => 'required|integer|min:0|max:999|lt:number_two',
             'number_two' => 'required|integer|min:0|max:999',
             'number_exercises' => 'required|integer|min:1|max:50'
         ]);
 
-        dd($request->all());
+        $operations = [];
+        if ($request->check_sum) $operations[] = 'sum';
+        if ($request->check_subtraction) $operations[] = 'subtraction';
+        if ($request->check_multiplication) $operations[] = 'multiplication';
+        if ($request->check_division) $operations[] = 'division';
+
+        $min = $request->number_one;
+        $max = $request->number_two;
+        $numberExercises = $request->number_exercises;
+
+        $exercises = [];
+
+        for ($index = 1; $index <= $numberExercises; $index++) {
+            $operation = $operations[array_rand($operations)];
+            $number1 = rand($min, $max);
+            $number2 = rand($min, $max);
+
+            $exercise = '';
+            $solution = '';
+
+            switch ($operation) {
+                case 'sum':
+                    $exercise = "$number1 + $number2 = ";
+                    $solution = $number1 + $number2;
+                    break;
+                case 'subtraction':
+                    $exercise = "$number1 - $number2 = ";
+                    $solution = $number1 - $number2;
+                    break;
+                case 'multiplication':
+                    $exercise = "$number1 × $number2 = ";
+                    $solution = $number1 * $number2;
+                    break;
+                case 'division':
+                    $number2 = ($number2 == 0) ? 1 : $number2;
+                    $exercise = "$number1 ÷ $number2 = ";
+                    $solution = round($number1 / $number2, 2);
+                    break;
+            }
+
+            $exercises[] = [
+                'exercise_number' => $index,
+                'exercise' => $exercise,
+                'solution' => "$exercise $solution"
+            ];
+        }
+        dd($exercises);
+        // Retorna os exercícios para a view
+        //return view('exercises', compact('exercises'));
     }
+
 
     public function printExercises()
     {
