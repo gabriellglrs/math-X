@@ -9,12 +9,12 @@ class MainController extends Controller
 {
     public function home()
     {
-        echo "apresentar pagina inicial";
+        return view('home');
     }
 
     public function generateExercises(Request $request)
     {
-        echo "gerar exercicios";
+        echo 'Gerar exercícios';
     }
 
     public function printExercises()
