@@ -16,9 +16,9 @@
 <body>
 
 <!-- logo -->
-<div class="text-center my-3">
-    <img src="{{ asset('assets/images/logo.jpg') }}" alt="logo" class="img-fluid">
-</div>
+<x-logo/>
+
+<!-- title -->
 
 <h3 class="text-center text-secondary mb-5">
     Selecione as opções para gerar<br><span class="text-info">exercícios de matemática</span>.
@@ -140,9 +140,8 @@
 </form>
 
 <!-- footer -->
-<footer class="text-center mt-5">
-    <p class="text-secondary">{{ getenv('APP_NAME') }} &copy; <span class="text-info">{{ date('Y') }}</span></p>
-</footer>
+<x-footer/>
+
 
 <!-- bootstrap -->
 <script src="{{ asset('assets/bootstrap/bootstrap.bundle.min.js') }}"></script>
