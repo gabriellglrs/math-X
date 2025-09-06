@@ -2,6 +2,17 @@
 
 Uma aplicação web intuitiva desenvolvida em Laravel para gerar exercícios matemáticos personalizados. Ideal para professores, pais e estudantes que desejam praticar operações básicas de matemática.
 
+## localhost:8080/
+<img width="1902" height="491" alt="image" src="https://github.com/user-attachments/assets/19d045ea-6975-4059-a450-52b440d79456" />
+<img width="1905" height="961" alt="image" src="https://github.com/user-attachments/assets/b485fec3-1d42-42db-961a-84758ac5fc64" />
+
+## localhost:8080/generate-exercises
+<img width="1905" height="486" alt="image" src="https://github.com/user-attachments/assets/f3fa3c4e-980d-4f84-b3f0-ac720bc2947f" />
+<img width="1899" height="962" alt="image" src="https://github.com/user-attachments/assets/7d13f6ab-a06c-4a43-af4c-c87e1ea0038c" />
+<img width="1891" height="964" alt="image" src="https://github.com/user-attachments/assets/6daa68dc-39ce-4a76-9deb-85107e7fb144" />
+<img width="1519" height="1018" alt="image" src="https://github.com/user-attachments/assets/cef000f2-b97c-4b7f-9773-f41246f0dd3b" />
+
+
 ## 📚 Objetivos de Aprendizado
 
 Este projeto demonstra conceitos importantes do desenvolvimento web com Laravel:
